@@ -451,8 +451,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Configure your EmailJS keys here:
             const serviceID = 'service_bkd4y4r'; // e.g. 'service_gmail'
-            const templateID = 'YOUR_EMAILJS_TEMPLATE_ID'; // e.g. 'template_contact'
-            const publicKey = 'YOUR_EMAILJS_PUBLIC_KEY';   // e.g. 'user_XXXXXXXXXXXXX'
+            const templateID = 'template_b9k4wea'; // e.g. 'template_contact'
+            const publicKey = 'Q_kPrZpUa2pwrQTtq';   // e.g. 'user_XXXXXXXXXXXXX'
 
             formStatus.className = 'form-status sending';
             formStatus.textContent = 'Sending message...';

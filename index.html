@@ -357,8 +357,7 @@
                          data-cert-title="Architecting on AWS" 
                          data-cert-issuer="AWS | CloudThat Training" 
                          data-cert-date="May 16 - 20, 2024" 
-                         data-cert-id="CT/24/941436"
-                         data-cert-img="assets/aws_architecting_cert.png">
+                         data-cert-id="CT/24/941436">
                         <div class="cert-icon-wrapper">
                             <i class="fa-brands fa-aws"></i>
                         </div>
@@ -376,8 +375,7 @@
                          data-cert-title="Solutions Architecture Job Simulation" 
                          data-cert-issuer="AWS | Forage" 
                          data-cert-date="December 30, 2024" 
-                         data-cert-id="cf5b5r5SxjJBHQR48"
-                         data-cert-img="assets/aws_forage_cert.png">
+                         data-cert-id="cf5b5r5SxjJBHQR48">
                         <div class="cert-icon-wrapper">
                             <i class="fa-solid fa-laptop-code"></i>
                         </div>
@@ -395,8 +393,7 @@
                          data-cert-title="Dedicated Member of Explorers" 
                          data-cert-issuer="Explorers Community" 
                          data-cert-date="Achievement" 
-                         data-cert-id="Awarded for Exceptional Team Contribution"
-                         data-cert-img="assets/explorers_member_cert.png">
+                         data-cert-id="Awarded for Exceptional Team Contribution">
                         <div class="cert-icon-wrapper">
                             <i class="fa-solid fa-award"></i>
                         </div>
@@ -457,26 +454,27 @@
                     <form action="#" class="contact-form" id="contact-form">
                         <div class="form-grid">
                             <div class="form-group">
-                                <input type="text" id="form-name" class="form-input" placeholder=" " required>
+                                <input type="text" name="from_name" id="form-name" class="form-input" placeholder=" " required>
                                 <label for="form-name" class="form-label">Your Name</label>
                             </div>
                             <div class="form-group">
-                                <input type="email" id="form-email" class="form-input" placeholder=" " required>
+                                <input type="email" name="from_email" id="form-email" class="form-input" placeholder=" " required>
                                 <label for="form-email" class="form-label">Your Email</label>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="form-subject" class="form-input" placeholder=" " required>
+                            <input type="text" name="subject" id="form-subject" class="form-input" placeholder=" " required>
                             <label for="form-subject" class="form-label">Subject</label>
                         </div>
                         <div class="form-group">
-                            <textarea id="form-message" class="form-input form-textarea" placeholder=" " required></textarea>
+                            <textarea name="message" id="form-message" class="form-input form-textarea" placeholder=" " required></textarea>
                             <label for="form-message" class="form-label">Message</label>
                         </div>
-                        <button type="submit" class="btn btn-primary form-btn">
+                        <button type="submit" class="btn btn-primary form-btn" id="form-submit-btn">
                             <span>Send Message</span>
                             <i class="fa-solid fa-paper-plane"></i>
                         </button>
+                        <div class="form-status" id="form-status"></div>
                     </form>
                 </div>
             </div>
@@ -489,9 +487,7 @@
             <button class="modal-close" id="modal-close" aria-label="Close Modal">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="modal-preview-wrapper">
-                <img src="" alt="Certificate View" class="modal-preview-img" id="modal-cert-img">
-            </div>
+
             <div class="modal-body">
                 <div class="modal-badge">
                     <i class="fa-solid fa-award"></i>
@@ -522,6 +518,9 @@
         </div>
     </footer>
 
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
     <!-- Script -->
     <script src="script.js"></script>
 </body>

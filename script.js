@@ -188,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalIssuer = document.getElementById('modal-cert-issuer');
     const modalDate = document.getElementById('modal-cert-date');
     const modalId = document.getElementById('modal-cert-id');
-    const modalImg = document.getElementById('modal-cert-img');
 
     certButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -199,14 +198,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const issuer = card.getAttribute('data-cert-issuer');
             const date = card.getAttribute('data-cert-date');
             const id = card.getAttribute('data-cert-id');
-            const imgPath = card.getAttribute('data-cert-img');
 
             // Inject into modal elements
             if (modalTitle) modalTitle.textContent = title;
             if (modalIssuer) modalIssuer.textContent = issuer;
             if (modalDate) modalDate.textContent = date;
             if (modalId) modalId.textContent = id;
-            if (modalImg && imgPath) modalImg.src = imgPath;
 
             // Open modal
             if (certModal) {
@@ -441,4 +438,61 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener('scroll', scrollActive);
     scrollActive(); // Run once on load
+
+
+    /* ==================== CONTACT FORM (EmailJS) ==================== */
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    const formSubmitBtn = document.getElementById('form-submit-btn');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Configure your EmailJS keys here:
+            const serviceID = 'YOUR_EMAILJS_SERVICE_ID'; // e.g. 'service_gmail'
+            const templateID = 'YOUR_EMAILJS_TEMPLATE_ID'; // e.g. 'template_contact'
+            const publicKey = 'YOUR_EMAILJS_PUBLIC_KEY';   // e.g. 'user_XXXXXXXXXXXXX'
+
+            formStatus.className = 'form-status sending';
+            formStatus.textContent = 'Sending message...';
+            formSubmitBtn.disabled = true;
+
+            // If keys are not configured, simulate successful send with a guide message
+            if (publicKey.startsWith('YOUR') || serviceID.startsWith('YOUR')) {
+                setTimeout(() => {
+                    formStatus.className = 'form-status success';
+                    formStatus.innerHTML = '<strong>Demo Mode:</strong> Message simulated! To receive actual emails, configure your EmailJS keys in <code>script.js</code>.';
+                    contactForm.reset();
+                    formSubmitBtn.disabled = false;
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 8000);
+                }, 1500);
+                return;
+            }
+
+            // Initialize EmailJS
+            emailjs.init({
+                publicKey: publicKey,
+            });
+
+            // Send form
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = 'Message sent successfully! ✓';
+                    contactForm.reset();
+                    formSubmitBtn.disabled = false;
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 5000);
+                }, (error) => {
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = 'Failed to send message. Please check your EmailJS configurations.';
+                    console.error('EmailJS Error:', error);
+                    formSubmitBtn.disabled = false;
+                });
+        });
+    }
 });

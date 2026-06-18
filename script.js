@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             // Configure your EmailJS keys here:
-            const serviceID = 'YOUR_EMAILJS_SERVICE_ID'; // e.g. 'service_gmail'
+            const serviceID = 'service_bkd4y4r'; // e.g. 'service_gmail'
             const templateID = 'YOUR_EMAILJS_TEMPLATE_ID'; // e.g. 'template_contact'
             const publicKey = 'YOUR_EMAILJS_PUBLIC_KEY';   // e.g. 'user_XXXXXXXXXXXXX'
 

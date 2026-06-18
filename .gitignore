@@ -1,0 +1,20 @@
+# Gemini agent files
+.gemini/
+.agents/
+
+# System generated
+.system_generated/
+scratch/
+
+# Logs
+*.log
+
+# Plan artifacts (these live in the brain directory, not here, but just in case)
+implementation_plan.md
+walkthrough.md
+task.md
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
